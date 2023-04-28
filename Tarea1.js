@@ -22,19 +22,23 @@ console.log(mismosElementos([1,2,3,4,5,6],[2,5,7]))
 class Carrito {
 
     constructor (){
-        this.montoTotal = 0;
+        this.montoTotal= 0;
         this.productos = [];
     }
 
-    agregarProducto (nombre, precio){
-        this.montoTotal = this.montoTotal + precio;
-       this.productos.push(nombre);
-    }
-
-}
+    agregarProducto (nombre, precio, unidades){
+        this.montoTotal = this.montoTotal + (precio*unidades);
+        if (this.productos.includes(nombre)){
+            throw `El producto ${nombre} ya esta en el carrito`;
+        }
+        else {
+            this.productos.push(nombre);
+        }
+    }}
+    
 
 let carrito1 = new Carrito();
-carrito1.agregarProducto("leche", 10);
-carrito1.agregarProducto("azucar", 30);
-
+carrito1.agregarProducto("leche", 30, 1);
+console.log(carrito1);
+carrito1.agregarProducto("leche", 30, 1);
 console.log(carrito1)
